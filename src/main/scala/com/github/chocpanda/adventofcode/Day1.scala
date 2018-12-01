@@ -18,9 +18,9 @@ package com.github.chocpanda.adventofcode
 
 import fastparse._
 import NoWhitespace._
-import cats.effect.{ExitCode, IO, IOApp, Resource}
+import cats.effect.{ ExitCode, IO, IOApp, Resource }
 import cats.implicits._
-import fs2.{Stream, io, text}
+import fs2.{ io, text, Stream }
 import java.nio.file.Paths
 import java.util.concurrent.Executors
 
@@ -50,17 +50,16 @@ object Day1 extends IOApp {
           .map(line => parse(line, parser(_)))
       }
 
-  def eval: Stream[IO, Parsed[(String, Int)]] => Stream[IO, Int] = _.fold(0) {
+  def eval: (Int, Parsed[(String, Int)]) => Int = {
     case (curr, Parsed.Success(("+", operand), _)) => curr + operand
     case (curr, Parsed.Success(("-", operand), _)) => curr - operand
     case (curr, _)                                 => curr
   }
 
   def run(args: List[String]): IO[ExitCode] =
-    eval(parseFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\input.txt"))
-      .map { res =>
-        IO(println(res))
-      }
+    parseFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\input.txt")
+      .fold(0)(eval)
+      .evalMap(res => IO(println(res)))
       .compile
       .drain
       .as(ExitCode.Success)
