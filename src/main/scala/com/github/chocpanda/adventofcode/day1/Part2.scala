@@ -18,12 +18,10 @@ package com.github.chocpanda.adventofcode.day1
 
 import java.util.concurrent.Executors
 
-import cats.Show
 import cats.effect.{ ExitCode, IO, IOApp, Resource }
 import cats.implicits._
 import fastparse.Parsed
 
-import scala.collection.mutable
 import scala.concurrent.{ ExecutionContext, ExecutionContextExecutorService }
 
 object Part2 extends IOApp {
@@ -41,20 +39,20 @@ object Part2 extends IOApp {
 
   private val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt"
 
-  def run(args: List[String]): IO[ExitCode] = {
-//    val seen = mutable.Set[Int](0)
+  def run(args: List[String]): IO[ExitCode] =
     Parser
       .parseFile(file, blockingExecutionContext)
       .repeat
       .mapAccumulate(0)((acc, curr) => (eval(acc, curr), curr))
-      .mapAccumulate((Set.empty[Int], false)) { case ((seen, _), freq @ (acc, _)) => ((seen + acc, seen contains acc), freq) }
+      .mapAccumulate((Set.empty[Int], false)) {
+        case ((seen, _), freq @ (acc, _)) => ((seen + acc, seen contains acc), freq)
+      }
       .dropWhile {
         case ((_, dup), _) => dup
       }
       .take(1)
-      .evalMap(res => putStr(res._1))
+      .evalMap(res => putStr(res._2._1))
       .compile
       .drain
       .as(ExitCode.Success)
-  }
 }
