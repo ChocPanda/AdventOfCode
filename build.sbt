@@ -9,6 +9,13 @@ lazy val AdventOfCode =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        library.cats,
+        library.catsEffect,
+        library.fastParse,
+        library.fs2Core,
+        library.fs2IO
+      ),
+      libraryDependencies ++= Seq(
         library.scalaCheck % Test,
         library.utest      % Test
       )
@@ -23,9 +30,16 @@ lazy val library =
     object Version {
       val scalaCheck = "1.14.0"
       val utest      = "0.6.6"
+      val cats = "1.4.0"
+      val catsEffect = "1.0.0"
       val fastParse  = "2.0.4"
+      val fs2 = "1.0.0"
     }
     val fastParse  = "com.lihaoyi"    %% "fastparse"  % Version.fastParse
+    val cats = "org.typelevel" %% "cats" % Version.cats
+    val catsEffect = "org.typelevel" %% "cats-effect" % Version.catsEffect
+    val fs2Core = "co.fs2" %% "fs2-core" % Version.fs2
+    val fs2IO = "co.fs2" %% "fs2-io" % Version.fs2
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
     val utest      = "com.lihaoyi"    %% "utest"      % Version.utest
   }
