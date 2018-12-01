@@ -1,7 +1,6 @@
-
 package com.github.chocpanda
 
-package object adventofcode {
+package object day1 {
 
   type Traversable[+A] = scala.collection.immutable.Traversable[A]
   type Iterable[+A]    = scala.collection.immutable.Iterable[A]
