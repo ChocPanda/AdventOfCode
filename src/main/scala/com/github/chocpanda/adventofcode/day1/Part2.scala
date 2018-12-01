@@ -42,14 +42,14 @@ object Part2 extends IOApp {
   private val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt"
 
   def run(args: List[String]): IO[ExitCode] = {
-    val seen = mutable.Set[Int](0)
+//    val seen = mutable.Set[Int](0)
     Parser
       .parseFile(file, blockingExecutionContext)
       .repeat
       .mapAccumulate(0)((acc, curr) => (eval(acc, curr), curr))
+      .mapAccumulate((Set.empty[Int], false)) { case ((seen, _), freq @ (acc, _)) => ((seen + acc, seen contains acc), freq) }
       .dropWhile {
-        case (frequency, _) if seen contains frequency => false
-        case (frequency, _)                            => seen.add(frequency); true
+        case ((_, dup), _) => dup
       }
       .take(1)
       .evalMap(res => putStr(res._1))
