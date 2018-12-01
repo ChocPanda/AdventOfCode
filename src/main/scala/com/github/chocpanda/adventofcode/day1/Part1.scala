@@ -39,8 +39,7 @@ object Part1 extends IOApp {
 
   def run(args: List[String]): IO[ExitCode] =
     Parser
-      .parseFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt",
-                 blockingExecutionContext)
+      .parseFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt", blockingExecutionContext)
       .fold(0)(eval)
       .evalMap(putStr(_))
       .compile

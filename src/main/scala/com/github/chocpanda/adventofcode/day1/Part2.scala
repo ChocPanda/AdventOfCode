@@ -41,9 +41,6 @@ object Part2 extends IOApp {
 
   private val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt"
 
-  implicit val showParsed: Show[Parsed[Operation]] = p => p.toString
-  implicit val showSet: Show[mutable.Set[Int]]     = p => p.toString
-
   def run(args: List[String]): IO[ExitCode] = {
     val seen = mutable.Set[Int](0)
     Parser
@@ -55,7 +52,7 @@ object Part2 extends IOApp {
         case (frequency, _)                            => seen.add(frequency); true
       }
       .take(1)
-      .evalMap(putStr(_._1))
+      .evalMap(res => putStr(res._1))
       .compile
       .drain
       .as(ExitCode.Success)
