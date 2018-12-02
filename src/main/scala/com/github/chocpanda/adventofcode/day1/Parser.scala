@@ -16,14 +16,8 @@
 
 package com.github.chocpanda.adventofcode.day1
 
-import java.nio.file.Paths
-
-import cats.effect.{ ContextShift, IO, Resource }
 import fastparse.NoWhitespace._
 import fastparse._
-import fs2.{ io, text, Stream }
-
-import scala.concurrent.ExecutionContextExecutorService
 
 object Parser {
 
@@ -34,21 +28,6 @@ object Parser {
   def parseOperator[_: P]: P[String] = P(CharIn("+\\-").!)
 
   def parser[_: P]: P[(String, Int)] = parseOperator ~ parseNumber ~ End
-
-  def parseFile(fileName: String, resource: Resource[IO, ExecutionContextExecutorService])(
-    implicit contextShift: ContextShift[IO]
-  ): Stream[IO, Parsed[Operation]] = {
-    implicit val ec: Resource[IO, ExecutionContextExecutorService] = resource
-    Stream
-      .resource(ec)
-      .flatMap { ec =>
-        io.file
-          .readAll[IO](Paths.get(fileName), ec, 4096)
-          .through(text.utf8Decode)
-          .through(text.lines)
-          .map(Parser.parseOperation)
-      }
-  }
 
   def parseOperation(line: String): Parsed[(String, Int)] = parse(line, parser(_))
 }

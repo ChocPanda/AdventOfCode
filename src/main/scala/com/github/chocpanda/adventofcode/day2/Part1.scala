@@ -14,47 +14,37 @@
  * limitations under the License.
  */
 
-package com.github.chocpanda.adventofcode.day1
+package com.github.chocpanda.adventofcode.day2
 
 import java.util.concurrent.Executors
 
 import cats.effect.{ ExitCode, IO, IOApp, Resource }
-import com.github.chocpanda.utils.{ FileReader, Logger }
 import cats.implicits._
-import fastparse.Parsed
+import com.github.chocpanda.utils.{ FileReader, Logger }
 
 import scala.concurrent.{ ExecutionContext, ExecutionContextExecutorService }
 
-object Part2 extends IOApp {
-
-  /*_*/
+object Part1 extends IOApp {
 
   private val blockingExecutionContext: Resource[IO, ExecutionContextExecutorService] =
     Resource.make(IO(ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(2))))(ec => IO(ec.shutdown()))
 
-  private def eval: (Int, Parsed[Operation]) => Int = {
-    case (curr, Parsed.Success(("+", operand), _)) => curr + operand
-    case (curr, Parsed.Success(("-", operand), _)) => curr - operand
-    case (curr, _)                                 => curr
-  }
-
-  private val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt"
+  val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day2\\input.txt"
 
   def run(args: List[String]): IO[ExitCode] =
     FileReader
       .readFile(file, blockingExecutionContext)
-      .map(Parser.parseOperation)
-      .repeat
-      .mapAccumulate(0)((acc, curr) => (eval(acc, curr), curr))
-      .mapAccumulate((Set.empty[Int], false)) {
-        case ((seen, _), freq @ (acc, _)) => ((seen + acc, seen contains acc), freq)
+      .map(CheckSumEval.eval)
+      .fold((0, 0)) {
+        case ((accDoubles, accTriples), CheckSumEval(true, true))   => (accDoubles + 1, accTriples + 1)
+        case ((accDoubles, accTriples), CheckSumEval(false, false)) => (accDoubles, accTriples)
+        case ((accDoubles, accTriples), CheckSumEval(false, true))  => (accDoubles, accTriples + 1)
+        case ((accDoubles, accTriples), CheckSumEval(true, false))  => (accDoubles + 1, accTriples)
       }
-      .dropWhile {
-        case ((_, dup), _) => dup
-      }
-      .take(1)
-      .evalMap(res => Logger.log(res._2._1))
+      .map(res => res._1 * res._2)
+      .evalMap(Logger.log(_))
       .compile
       .drain
       .as(ExitCode.Success)
+
 }

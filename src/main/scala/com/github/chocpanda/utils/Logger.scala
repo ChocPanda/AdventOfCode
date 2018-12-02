@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package com.github.chocpanda.adventofcode
+package com.github.chocpanda.utils
 
-package object day1 {
+import cats.Show
+import cats.effect.IO
+import cats.implicits._
 
-  type Operation = (String, Int)
+object Logger {
 
+  def log[A: Show](message: A): IO[Unit] = IO(println(message.show))
 }

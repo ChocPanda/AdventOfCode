@@ -14,10 +14,17 @@
  * limitations under the License.
  */
 
-package com.github.chocpanda.adventofcode
+package com.github.chocpanda.adventofcode.day2
 
-package object day1 {
+import cats.Show
 
-  type Operation = (String, Int)
+final case class CheckSumEval(hasDouble: Boolean, hasTriple: Boolean)
 
+object CheckSumEval {
+  def eval(str: String): CheckSumEval = {
+    val numChars = str.groupBy(identity).mapValues(_.length)
+    new CheckSumEval(numChars.exists { case (_, num) => num == 2 }, numChars.exists { case (_, num) => num == 3 })
+  }
+
+  implicit val showCheckSumEval: Show[CheckSumEval] = c => c.toString
 }

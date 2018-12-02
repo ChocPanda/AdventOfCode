@@ -51,7 +51,7 @@ lazy val library =
 lazy val settings =
 commonSettings ++
 fmtSettings ++
-//fixSettings ++
+fixSettings ++
 styleSettings
 
 lazy val commonSettings =

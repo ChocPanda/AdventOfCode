@@ -20,6 +20,7 @@ import java.util.concurrent.Executors
 
 import cats.effect.{ ExitCode, IO, IOApp, Resource }
 import cats.implicits._
+import com.github.chocpanda.utils.{ FileReader, Logger }
 import fastparse.Parsed
 
 import scala.concurrent.{ ExecutionContext, ExecutionContextExecutorService }
@@ -38,10 +39,11 @@ object Part1 extends IOApp {
   }
 
   def run(args: List[String]): IO[ExitCode] =
-    Parser
-      .parseFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt", blockingExecutionContext)
+    FileReader
+      .readFile("F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day1\\input.txt", blockingExecutionContext)
+      .map(Parser.parseOperation)
       .fold(0)(eval)
-      .evalMap(putStr(_))
+      .evalMap(Logger.log(_))
       .compile
       .drain
       .as(ExitCode.Success)
