@@ -21,8 +21,6 @@ import fastparse._
 
 object Parser {
 
-  /*_*/
-
   def parseNumber[_: P]: P[Int] = P(CharIn("0-9").rep(1).!.map(_.toInt))
 
   def parseOperator[_: P]: P[String] = P(CharIn("+\\-").!)
