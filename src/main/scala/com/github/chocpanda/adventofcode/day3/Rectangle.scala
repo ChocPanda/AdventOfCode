@@ -16,10 +16,16 @@
 
 package com.github.chocpanda.adventofcode.day3
 
-final case class Rectangle(id: String, topLeft: Position, height: Int, width: Int) {
-  lazy val topRight: Position    = topLeft.copy(x = topLeft.x + width)
-  lazy val bottomLeft: Position  = topLeft.copy(y = topLeft.y + height)
-  lazy val bottomRight: Position = bottomLeft.copy(x = topLeft.x + width)
+final case class Rectangle(id: String, topLeft: Point, width: Int, height: Int) {
+  lazy val topRight: Point    = topLeft.copy(x = topLeft.x + width)
+  lazy val bottomLeft: Point  = topLeft.copy(y = topLeft.y + height)
+  lazy val bottomRight: Point = bottomLeft.copy(x = topLeft.x + width)
+
+  lazy val points: List[Point] =
+    for {
+      x: Int <- (topLeft.x until topRight.x).toList
+      y: Int <- (topLeft.y until bottomLeft.y).toList
+    } yield Point(x, y)
 }
 
 import fastparse._, SingleLineWhitespace._
@@ -31,7 +37,7 @@ object Rectangle {
   private def parseId[_: P]: P[String] = P("#" ~ CharIn("0-9").rep(1).!)
 
   def parser[_: P]: P[Rectangle] =
-    (parseId ~ "@" ~ Position.parser ~ ":" ~ parseNumber ~ "x" ~ parseNumber).map {
+    (parseId ~ "@" ~ Point.parser ~ ":" ~ parseNumber ~ "x" ~ parseNumber).map {
       case (id, pos, width, height) => apply(id, pos, width, height)
     }
 

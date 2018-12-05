@@ -1,0 +1,317 @@
+{
+    "version" : "1.0.0",
+    "project" : {
+        "name" : "AdventOfCode",
+        "directory" : "C:\\dev\\AdventOfCode",
+        "sources" : [
+            "C:\\dev\\AdventOfCode\\src\\main\\scala",
+            "C:\\dev\\AdventOfCode\\target\\scala-2.12\\src_managed\\main"
+        ],
+        "dependencies" : [
+        ],
+        "classpath" : [
+            "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-library.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-core_2.12\\jars\\cats-core_2.12-1.4.0.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-macros_2.12\\jars\\cats-macros_2.12-1.4.0.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\machinist_2.12\\jars\\machinist_2.12-0.6.5.jar",
+            "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-reflect.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-kernel_2.12\\jars\\cats-kernel_2.12-1.4.0.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-effect_2.12\\jars\\cats-effect_2.12-1.0.0.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\fastparse_2.12\\jars\\fastparse_2.12-2.0.4.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\sourcecode_2.12\\bundles\\sourcecode_2.12-0.1.4.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-core_2.12\\jars\\fs2-core_2.12-1.0.0.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\org.scodec\\scodec-bits_2.12\\bundles\\scodec-bits_2.12-1.1.5.jar",
+            "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-io_2.12\\jars\\fs2-io_2.12-1.0.0.jar"
+        ],
+        "out" : "C:\\dev\\AdventOfCode\\.bloop\\AdventOfCode",
+        "classesDir" : "C:\\dev\\AdventOfCode\\.bloop\\AdventOfCode\\scala-2.12\\classes",
+        "scala" : {
+            "organization" : "org.scala-lang",
+            "name" : "scala-compiler",
+            "version" : "2.12.7",
+            "options" : [
+                "-unchecked",
+                "-deprecation",
+                "-language:_",
+                "-target:jvm-1.8",
+                "-encoding",
+                "UTF-8",
+                "-Ypartial-unification",
+                "-Ywarn-unused-import",
+                "-Yrangepos",
+                "-Ywarn-unused-import",
+                "-P:semanticdb:failures:warning",
+                "-P:semanticdb:sourceroot:C:\\dev\\AdventOfCode",
+                "-Yrangepos",
+                "-Xplugin-require:semanticdb"
+            ],
+            "jars" : [
+                "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\jline.jar",
+                "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-compiler.jar",
+                "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-library.jar",
+                "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-reflect.jar",
+                "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-xml_2.12.jar"
+            ],
+            "setup" : {
+                "order" : "mixed",
+                "addLibraryToBootClasspath" : true,
+                "addCompilerToClasspath" : false,
+                "addExtraJarsToClasspath" : false,
+                "manageBootClasspath" : true,
+                "filterLibraryFromClasspath" : true
+            }
+        },
+        "java" : {
+            "options" : [
+            ]
+        },
+        "test" : {
+            "frameworks" : [
+                {
+                    "names" : [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names" : [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names" : [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names" : [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names" : [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names" : [
+                        "utest.runner.Framework"
+                    ]
+                }
+            ],
+            "options" : {
+                "excludes" : [
+                ],
+                "arguments" : [
+                ]
+            }
+        },
+        "platform" : {
+            "name" : "jvm",
+            "config" : {
+                "home" : "C:\\Program Files\\Java\\jdk1.8.0_191\\jre",
+                "options" : [
+                ]
+            },
+            "mainClass" : [
+            ]
+        },
+        "resolution" : {
+            "modules" : [
+                {
+                    "organization" : "org.scala-lang",
+                    "name" : "scala-library",
+                    "version" : "2.12.7",
+                    "artifacts" : [
+                        {
+                            "name" : "scala-library",
+                            "path" : "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-library.jar"
+                        },
+                        {
+                            "name" : "scala-library",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.scala-lang\\scala-library\\srcs\\scala-library-2.12.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.typelevel",
+                    "name" : "cats-core_2.12",
+                    "version" : "1.4.0",
+                    "artifacts" : [
+                        {
+                            "name" : "cats-core_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-core_2.12\\jars\\cats-core_2.12-1.4.0.jar"
+                        },
+                        {
+                            "name" : "cats-core_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-core_2.12\\srcs\\cats-core_2.12-1.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.typelevel",
+                    "name" : "cats-macros_2.12",
+                    "version" : "1.4.0",
+                    "artifacts" : [
+                        {
+                            "name" : "cats-macros_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-macros_2.12\\jars\\cats-macros_2.12-1.4.0.jar"
+                        },
+                        {
+                            "name" : "cats-macros_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-macros_2.12\\srcs\\cats-macros_2.12-1.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.typelevel",
+                    "name" : "machinist_2.12",
+                    "version" : "0.6.5",
+                    "artifacts" : [
+                        {
+                            "name" : "machinist_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\machinist_2.12\\jars\\machinist_2.12-0.6.5.jar"
+                        },
+                        {
+                            "name" : "machinist_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\machinist_2.12\\srcs\\machinist_2.12-0.6.5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.scala-lang",
+                    "name" : "scala-reflect",
+                    "version" : "2.12.7",
+                    "artifacts" : [
+                        {
+                            "name" : "scala-reflect",
+                            "path" : "C:\\Users\\msearle\\.sbt\\boot\\scala-2.12.7\\lib\\scala-reflect.jar"
+                        },
+                        {
+                            "name" : "scala-reflect",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.scala-lang\\scala-reflect\\srcs\\scala-reflect-2.12.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.typelevel",
+                    "name" : "cats-kernel_2.12",
+                    "version" : "1.4.0",
+                    "artifacts" : [
+                        {
+                            "name" : "cats-kernel_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-kernel_2.12\\jars\\cats-kernel_2.12-1.4.0.jar"
+                        },
+                        {
+                            "name" : "cats-kernel_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-kernel_2.12\\srcs\\cats-kernel_2.12-1.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.typelevel",
+                    "name" : "cats-effect_2.12",
+                    "version" : "1.0.0",
+                    "artifacts" : [
+                        {
+                            "name" : "cats-effect_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-effect_2.12\\jars\\cats-effect_2.12-1.0.0.jar"
+                        },
+                        {
+                            "name" : "cats-effect_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.typelevel\\cats-effect_2.12\\srcs\\cats-effect_2.12-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "com.lihaoyi",
+                    "name" : "fastparse_2.12",
+                    "version" : "2.0.4",
+                    "artifacts" : [
+                        {
+                            "name" : "fastparse_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\fastparse_2.12\\jars\\fastparse_2.12-2.0.4.jar"
+                        },
+                        {
+                            "name" : "fastparse_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\fastparse_2.12\\srcs\\fastparse_2.12-2.0.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "com.lihaoyi",
+                    "name" : "sourcecode_2.12",
+                    "version" : "0.1.4",
+                    "artifacts" : [
+                        {
+                            "name" : "sourcecode_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\sourcecode_2.12\\bundles\\sourcecode_2.12-0.1.4.jar"
+                        },
+                        {
+                            "name" : "sourcecode_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\com.lihaoyi\\sourcecode_2.12\\srcs\\sourcecode_2.12-0.1.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "co.fs2",
+                    "name" : "fs2-core_2.12",
+                    "version" : "1.0.0",
+                    "artifacts" : [
+                        {
+                            "name" : "fs2-core_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-core_2.12\\jars\\fs2-core_2.12-1.0.0.jar"
+                        },
+                        {
+                            "name" : "fs2-core_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-core_2.12\\srcs\\fs2-core_2.12-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "org.scodec",
+                    "name" : "scodec-bits_2.12",
+                    "version" : "1.1.5",
+                    "artifacts" : [
+                        {
+                            "name" : "scodec-bits_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.scodec\\scodec-bits_2.12\\bundles\\scodec-bits_2.12-1.1.5.jar"
+                        },
+                        {
+                            "name" : "scodec-bits_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\org.scodec\\scodec-bits_2.12\\srcs\\scodec-bits_2.12-1.1.5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization" : "co.fs2",
+                    "name" : "fs2-io_2.12",
+                    "version" : "1.0.0",
+                    "artifacts" : [
+                        {
+                            "name" : "fs2-io_2.12",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-io_2.12\\jars\\fs2-io_2.12-1.0.0.jar"
+                        },
+                        {
+                            "name" : "fs2-io_2.12",
+                            "classifier" : "sources",
+                            "path" : "C:\\Users\\msearle\\.ivy2\\cache\\co.fs2\\fs2-io_2.12\\srcs\\fs2-io_2.12-1.0.0-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

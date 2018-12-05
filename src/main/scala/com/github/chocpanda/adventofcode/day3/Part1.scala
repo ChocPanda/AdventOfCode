@@ -29,24 +29,25 @@ object Part1 extends IOApp {
   private val blockingExecutionContext: Resource[IO, ExecutionContextExecutorService] =
     Resource.make(IO(ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(2))))(ec => IO(ec.shutdown()))
 
-  private val file = "F:\\Workspace\\Github\\AdventOfCode\\src\\main\\resources\\day3\\input.txt"
-
-  private def overlaps(rec1: Rectangle, rec2: Rectangle): Boolean =
-    !(rec1.topRight.x < rec2.topLeft.x ||
-    rec2.topRight.x < rec1.topLeft.x) &&
-    (rec1.bottomLeft.y < rec2.topLeft.y ||
-    rec2.bottomLeft.y < rec1.topLeft.y)
+  private val file = "C:\\dev\\AdventOfCode\\src\\main\\resources\\day3\\input.txt"
 
   def run(args: List[String]): IO[ExitCode] =
     FileReader
       .readFile(file, blockingExecutionContext)
       .map(Rectangle.parseRectangle)
-      .fold(List.empty[(Rectangle, Boolean)]) { (acc, curr) =>
-        val hasOverlappingRec: Boolean = acc.exists { case (rec, _) => overlaps(rec, curr) }
-        (curr, hasOverlappingRec) :: acc
+      .fold(Array.ofDim[Int](1000, 1000)) {
+        case (acc, rec) =>
+          rec.points.foreach { point =>
+            acc(point.x)(point.y) += 1
+          }
+          acc
       }
-      .map(_.count(_._2))
-      .evalMap(Logger.log(_))
+      .evalMap(
+        outer =>
+          Logger.log(outer.foldLeft(0) {
+            case (acc, inner) => acc + inner.count(_ > 1)
+          })
+      )
       .compile
       .drain
       .as(ExitCode.Success)

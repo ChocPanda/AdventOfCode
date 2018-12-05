@@ -19,13 +19,13 @@ package com.github.chocpanda.adventofcode.day3
 import fastparse._
 import NoWhitespace._
 
-final case class Position(x: Int, y: Int)
+final case class Point(x: Int, y: Int)
 
-object Position {
+object Point {
 
   private def parseNumber[_: P]: P[Int] = P(CharIn("0-9").rep(1).!.map(_.toInt))
 
-  def parser[_: P]: P[Position] = (parseNumber ~ "," ~ parseNumber).map { case (x, y) => apply(x, y) }
+  def parser[_: P]: P[Point] = (parseNumber ~ "," ~ parseNumber).map { case (x, y) => apply(x, y) }
 
-  def parsePosition(str: String): Parsed[Position] = parse(str, parser(_))
+  def parsePoint(str: String): Parsed[Point] = parse(str, parser(_))
 }
